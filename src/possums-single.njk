@@ -1,0 +1,14 @@
+---
+pagination:
+  data: possums
+  size: 1
+  alias: possum
+permalink: "possums/{{ possum.name | slugify }}/"
+---
+
+{% include "head.njk" %}
+
+<h1>This is the index</h1>
+{{ possum.name }} is {{ possum.age }} years old
+
+{% include "foot.njk" %}
