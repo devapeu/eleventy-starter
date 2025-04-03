@@ -31,7 +31,8 @@ export default function (eleventyConfig) {
   // Scripts
   eleventyConfig.addPassthroughCopy("src/**/*.js");
 
-  // Layout config
+  // Public assets
+  eleventyConfig.addPassthroughCopy({ "public/": "./" });
 
   return {
     dir: {
