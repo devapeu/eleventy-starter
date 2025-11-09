@@ -2,6 +2,8 @@ import * as sass from 'sass';
 import * as path from 'path';
 
 export default function (eleventyConfig) {
+  const timestamp = Date.now();
+
   // Styles
   eleventyConfig.addTemplateFormats("sass");
 	eleventyConfig.addExtension("sass", {
@@ -27,6 +29,11 @@ export default function (eleventyConfig) {
 			};
 		},
 	});
+
+  // Append a build timestamp so assets ignore cache on new builds.
+  eleventyConfig.addFilter('asset', function (assetPath) {
+    return `${assetPath}?v=${timestamp}`;
+  });
 
   // Scripts
   eleventyConfig.addPassthroughCopy("src/**/*.js");
